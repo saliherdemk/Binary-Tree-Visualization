@@ -4,6 +4,8 @@ function Node(value,right,left,parent = "",children = []){
     this.left = left;
     this.parent = parent;
     this.children = children;
+    this.isRight = null;
+    this.isLeft = null;
 
 }
 
@@ -16,28 +18,38 @@ function createTree(arr){
     }
 
     createData(arr[0]);
+    remove();
     drawGraph(arr);
 
 
 
 }
 
-function recursive(root,node){
+function remove(){
 
-   if(node.value < root.value){
+    var graph = document.querySelector('svg');
+    if(graph) {graph.parentElement.removeChild(graph)};
+
+}
+
+function recursive(root,node){
+    var a = Number(node.value)
+    var b = Number(root.value)
+   if(a < b){
+       if(root.right == null){
+            root.right = node;
+            node.isRight = true;
+       }else{
+           recursive(root.right,node);
+       }
+   } else if(a > b){
        if(root.left == null){
-           root.left = node
+            root.left = node;
+            node.isLeft = true
        } else{
            recursive(root.left,node);
-       } 
-       
-   } else if(node.value > root.value){
-    if(root.right == null){
-        root.right = node
-    } else{
-        recursive(root.right,node);
-        }
-    }
+       }
+   }
    
 }
 

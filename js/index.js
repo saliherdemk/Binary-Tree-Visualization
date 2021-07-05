@@ -10,7 +10,6 @@ function binary(){
             num.push(arr[i])
         }
     }
-
     createNodes(num);
 
 }

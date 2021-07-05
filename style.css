@@ -35,5 +35,6 @@ body{
     height: 85%;
     background-color: white;
     border: 2px solid black;
+    overflow: auto;
 
 }
