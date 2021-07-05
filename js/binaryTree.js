@@ -1,8 +1,12 @@
-function Node(value,right,left){
+function Node(value,right,left,parent = "",children = []){
     this.value = value;
     this.right = right;
     this.left = left;
+    this.parent = parent;
+    this.children = children;
+
 }
+
 
 function createTree(arr){
 
@@ -11,7 +15,8 @@ function createTree(arr){
         recursive(arr[0],arr[i])
     }
 
-    drawGraph(arr[0])
+    createData(arr[0]);
+    drawGraph(arr);
 
 
 
@@ -31,10 +36,30 @@ function recursive(root,node){
         root.right = node
     } else{
         recursive(root.right,node);
+        }
     }
+   
 }
 
-          
+function createData(node){
+
+    if(node == null){return}
+
+    if(node.right){
+        node.children.push(node.right);
+        node.right.parent = node;
+    }
+
+    if(node.left){
+        node.children.push(node.left);
+        node.left.parent = node;
+
+    }
+
+
+    createData(node.left);
+    createData(node.right);
+
 }
 
 function createNodes(list){
