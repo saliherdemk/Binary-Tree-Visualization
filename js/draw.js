@@ -12,15 +12,17 @@ function drawGraph(data){
         list.push(obj)
       }
 
+      //https://codeburst.io/javascript-array-distinct-5edc93501dc4
+      var unique = [...new Set(data.map(x => x.value))]
 
       var margin = {
-            top: 25,
+            top: 50,
             right: 5,
             bottom: 5,
-            left: 5
+            left: 20
         },
-        width = (100 * data.length) - margin.right - margin.left,
-        height = (100 * data.length) - margin.top - margin.bottom;
+        width = (100 * unique.length) - margin.right - margin.left,
+        height = (100 * unique.length) - margin.top - margin.bottom;
 
     var i = 0;
 
@@ -42,10 +44,8 @@ function drawGraph(data){
     nodes.forEach(function(d) {
         d.y = d.depth * 70;
         
-        console.log(d.children)
         if(d.isLeft === true && d.parent.right == null){
           d.x += d.depth * 10
-          console.log(d.children)
 
         }
 

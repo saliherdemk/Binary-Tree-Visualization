@@ -9,7 +9,6 @@ function Node(value,right,left,parent = "",children = []){
 
 }
 
-
 function createTree(arr){
 
 
@@ -19,9 +18,11 @@ function createTree(arr){
 
     createData(arr[0]);
     remove();
-    drawGraph(arr);
-
-
+    try{
+        drawGraph(arr);
+    } catch{
+        console.log("No Input");
+    }
 
 }
 
