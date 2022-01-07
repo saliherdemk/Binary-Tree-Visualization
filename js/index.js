@@ -151,6 +151,9 @@ function clearAndCreate() {
 
     var result = getInput()
     result = result.filter(item => item !== '')
+
+    result = [...new Set(result)]
+
     if (result.length > 0) {
         inp.style.display = "none"
         btn_click.style.display = "block"
