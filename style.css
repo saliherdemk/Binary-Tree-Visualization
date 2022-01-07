@@ -45,6 +45,28 @@ body{
 
 }
 
+.container .findContainer{
+    position: relative;
+    width: 80%;
+    left: 10%;
+    text-align: center;
+
+}
+
+.numContainer{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-right: 10px;
+    margin-top: 5px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
 .container #tree{
     position: relative;
     width: 80%;
@@ -63,5 +85,66 @@ body{
     text-align: center;
 }
 
+.btn-container{
+    position: relative;
+    width: 80%;
+    left: 10%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
 
+.btn, .btn-clear{
+    position: relative;
+    width: 80px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: lightblue;
+    margin-left: 5px;
+
+}
+
+.btn-clear{
+    display: none;
+}
+
+
+.gold{
+    animation: goldfill 1s forwards;
+}
+
+.gray{
+    animation: brownfill 1s forwards;
+}
+
+.green{
+    animation: greenfill 1s forwards;
+}
+
+
+
+@keyframes goldfill {
+    100%{
+        fill: gold;
+    }
+    
+}
+
+@keyframes brownfill {
+    100%{
+        fill: gray;
+        transform: scale(0.9);
+    }
+    
+}
+
+@keyframes greenfill {
+    100%{
+        fill: green;
+        transform: scale(1.1);
+    }
+    
+}
 

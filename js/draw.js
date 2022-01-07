@@ -46,12 +46,12 @@ function drawGraph(data) {
         d.y = d.depth * 70;
 
         if (d.isLeft === true && d.parent.right == null) {
-            d.x += d.depth * 10
+            d.x -= d.depth * 10
 
         }
 
         if (d.isRight == true && d.parent.left == null) {
-            d.x -= d.depth * 10
+            d.x += d.depth * 10
 
         }
     });
@@ -76,7 +76,8 @@ function drawGraph(data) {
         })
         .attr("r", 25)
         .style("fill", function (d, i) {
-            return d.children || d._children ? '#FFE066' : 'lightgray';
+
+            return d.children || d._children ? 'lightblue' : 'lightgray'; //#FFE066
         })
         .duration(1000)
         .ease('elastic');
@@ -110,4 +111,13 @@ function drawGraph(data) {
             return i * 85;
         })
         .attr("d", diagonal);
+}
+
+function find() {
+    var find = document.getElementById("eltofind").value
+    var root = document.querySelector('circle')
+
+
+
+
 }
