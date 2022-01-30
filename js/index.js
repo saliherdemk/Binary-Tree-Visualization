@@ -181,7 +181,7 @@ function sleep(ms) {
 }
 
 function findTheNode(root, node) {
-    var value = node.innerHTML
+    var value = parseFloat(node.innerHTML)
 
 
     fillToColor(root.value, root.value == value ? "green" : "gold")
