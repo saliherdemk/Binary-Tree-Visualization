@@ -32,7 +32,7 @@ function drawGraph(data) {
         return [d.x, d.y];
     });
     var svg = d3.select(".graph").append("svg")
-        .attr("width", width + margin.right + margin.left).attr("height", height + margin.top + margin.bottom)
+        .attr("width", width ).attr("height", height + margin.top)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -45,15 +45,6 @@ function drawGraph(data) {
     nodes.forEach(function (d) {
         d.y = d.depth * 70;
 
-        if (d.isLeft === true && d.parent.right == null) {
-            d.x -= d.depth * 10
-
-        }
-
-        if (d.isRight == true && d.parent.left == null) {
-            d.x += d.depth * 10
-
-        }
     });
 
     var gNode = svg.selectAll("g.node")
@@ -79,6 +70,9 @@ function drawGraph(data) {
 
             return d.children || d._children ? 'lightblue' : 'lightgray'; //#FFE066
         })
+        .style("visibility",function(d){
+            return d.value == "Empty"? "hidden" : "visible"
+        })
         .duration(1000)
         .ease('elastic');
 
@@ -92,32 +86,33 @@ function drawGraph(data) {
         })
         .text(function (d) {
             return d.value;
-        });
+        })
+        .style("visibility",function(d){
+            return d.value == "Empty"? "hidden" : "visible"
+        })
 
 
     //PATH 
     var path = svg.selectAll("path.link")
         .data(links, function (d) {
             return d.target.id;
-        });
+        })
+        .style("visibility",function(d){
+            return d.target.value == "Empty"? "hidden" : "visible"
+        })
+        
 
     var pathT = path.enter().insert("path", "g")
         .attr("class", "link")
         .attr("fill", "none")
-        .attr("stroke", "black");
+        .attr("stroke", "black")
+        .style("visibility",function(d){
+            return d.target.value == "Empty"? "hidden" : "visible"
+        })
 
     pathT.transition()
         .delay(function (d, i) {
             return i * 85;
         })
         .attr("d", diagonal);
-}
-
-function find() {
-    var find = document.getElementById("eltofind").value
-    var root = document.querySelector('circle')
-
-
-
-
 }

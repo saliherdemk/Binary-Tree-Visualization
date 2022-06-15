@@ -1,13 +1,12 @@
 const output = document.getElementById("tree");
 
-
 function getInput() {
     const value = document.getElementById("inp").value;
     var arr = value.split(" ")
     var num = [];
 
     for (var i = 0; i < arr.length; i++) {
-        if (!isNaN(arr[i])) {
+        if (!isNaN(arr[i]) && arr[i] != "\n") {
             num.push(arr[i])
         }
     }
@@ -15,7 +14,6 @@ function getInput() {
 }
 
 function action() {
-
     getRoot()
     const el = document.querySelector('#tree');
     el.onwheel = zoom;
@@ -103,7 +101,6 @@ function clear(el) {
 }
 
 function toggleLock() {
-
     var btn = document.querySelector(".btn")
     var inp = document.getElementById("inp")
     var btn_click = document.querySelector(".btn-clear")
@@ -131,16 +128,8 @@ function toggleLock() {
 
 
             }, i * 100)
-
-
-
         })
-
     }
-
-
-
-
 }
 
 function clearAndCreate() {
@@ -172,17 +161,10 @@ function clearAndCreate() {
         }
         cont.appendChild(el)
     })
-
-}
-
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function findTheNode(root, node) {
     var value = parseFloat(node.innerHTML)
-
 
     fillToColor(root.value, root.value == value ? "green" : "gold")
 
@@ -192,15 +174,12 @@ function findTheNode(root, node) {
         findTheNode(root.left, node)
         fillTheCircle(root.right, value)
 
-
     } else {
         findTheNode(root.right, node)
         fillTheCircle(root.left, value)
 
     }
-
 }
-
 
 function fillTheCircle(root, value) {
 
@@ -209,7 +188,6 @@ function fillTheCircle(root, value) {
 
     fillTheCircle(root.left)
     fillTheCircle(root.right)
-
 
 }
 
@@ -229,5 +207,3 @@ function fillToColor(value, color) {
         }
     })
 }
-
-
